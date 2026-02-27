@@ -1,9 +1,22 @@
 # Web Server Module
 
-Reusable Terraform module.
+This module creates:
 
-Creates:
-- VPC
+- A VPC
 - Public subnets
-- Private subnets
 - Internet Gateway
+- Route tables
+
+## Inputs
+
+- project_name
+- environment
+- vpc_cidr
+- availability_zones
+- public_subnet_cidrs
+- private_subnet_cidrs
+
+## Outputs
+
+- vpc_id
+- public_subnet_ids
