@@ -12,8 +12,8 @@ provider "aws" {
   region = var.aws_region
 }
 
-module "vpc_dev" {
-  source = "./modules/vpc"
+module "web_server" {
+  source = "./modules/web-server"
 
   project_name         = var.project_name
   environment          = "dev"
@@ -23,7 +23,7 @@ module "vpc_dev" {
   private_subnet_cidrs = ["10.0.11.0/24", "10.0.12.0/24"]
 
   enable_nat_gateway = true
-  single_nat_gateway = true # Cost savings for dev
+  single_nat_gateway = true
 
   tags = {
     Owner = "DevTeam"
@@ -31,9 +31,9 @@ module "vpc_dev" {
 }
 
 output "dev_vpc_id" {
-  value = module.vpc_dev.vpc_id
+  value = module.web_server.vpc_id
 }
 
 output "dev_public_subnets" {
-  value = module.vpc_dev.public_subnet_ids
+  value = module.web_server.public_subnet_ids
 }
